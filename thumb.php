@@ -73,11 +73,13 @@ if (!$width)
 if (function_exists("exif_read_data"))
 {
     $exif=exif_read_data($filename);
-    if (!empty($exif['Orientation']) && $exif['Orientation']== 6 || $exif['Orientation']== 8)
-    {
-        $tmp=$height;
-        $height=$width;
-        $width=$tmp;
+    if(!empty($exif)){
+        if (!empty($exif['Orientation']) && $exif['Orientation']== 6 || $exif['Orientation']== 8)
+        {
+            $tmp=$height;
+            $height=$width;
+            $width=$tmp;
+        }
     }
 }
 //----------------------------read file----------------------------------------<
@@ -86,13 +88,13 @@ $new_height=$height;
 if ($maxw!= "" && $width>= $maxw)
 {
     $new_width=$maxw;
-    $new_height=$height * ($new_width / $width);
+    $new_height=intval($height * ($new_width / $width));
 }
 //se troppo alta
 if ($maxh!= "" && $new_height>= $maxh)
 {
     $new_height=$maxh;
-    $new_width=$width * ($new_height / $height);
+    $new_width=intval($width * ($new_height / $height));
 }
 // se l' immagine e gia piccola
 if ($maxw!= "" && $maxh!= "" && $width<= $maxw && $height<= $maxh)

@@ -73,8 +73,8 @@ if (!$width)
 if (function_exists("exif_read_data"))
 {
     $exif=exif_read_data($filename);
-    if(!empty($exif)){
-        if (!empty($exif['Orientation']) && $exif['Orientation']== 6 || $exif['Orientation']== 8)
+    if(!empty($exif) && array_key_exists('Orientation',$exif)){
+        if ($exif['Orientation']== 6 || $exif['Orientation']== 8)
         {
             $tmp=$height;
             $height=$width;
@@ -193,7 +193,7 @@ function image_fix_orientation(&$image,$filename)
     if (function_exists("exif_read_data"))
     {
         $exif=exif_read_data($filename);
-        if (!empty($exif['Orientation']))
+        if (!empty($exif)&&array_key_exists('Orientation',$exif))
         {
             switch($exif['Orientation'])
             {

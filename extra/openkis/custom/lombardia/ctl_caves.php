@@ -13,6 +13,16 @@
         <frm_help_i18n>leave blank for self assignment</frm_help_i18n>
         <unique>1</unique>
     </field>
+    <field>
+        <name>code_fslo</name>
+        <frm_it>Codice FSLo</frm_it>
+        <type>string</type>
+        <frm_size>8</frm_size>
+        <frm_help_it>Codice univoco della federazione Speleologica Lombarda. È composto LO+CODICE PROVINCIA+NUMERO+NUMERO INGRESSO AGGIUNTIVO</frm_help_it>
+        <frm_show>0</frm_show>
+        <view_show>1</view_show>
+    </field>
+
 
     <field>
         <name>name</name>
@@ -21,7 +31,7 @@
         <view_hiddentitle>1</view_hiddentitle>
         <frm_size>80</frm_size>
         <frm_help_it>Nome principale della cavit&agrave;</frm_help_it>
-    </field>		
+    </field>
     <field>
         <name>synonyms</name>
         <frm_it>Altre denominazioni</frm_it>
@@ -48,18 +58,18 @@
     </field>
     <field>
         <name>firstreference</name>
-        <frm_it>Primo censitore</frm_it>		
+        <frm_it>rilevatori</frm_it>
         <type>uppercase</type>
         <frm_show>1</frm_show>
         <view_show>1</view_show>
         <frm_help_it>Inserire Cognome e nome di chi ha inserito a catasto la grotta,vale chi ha fornito i dati della scheda e NON chi la ha inserita sul gestionale.</frm_help_it>
-    </field>	
+    </field>
     <field>
         <frm_group>location</frm_group>
         <frm_group_i18n>location</frm_group_i18n>
         <name>country</name>
         <type>select</type>
-        <frm_default>Italy</frm_default>        
+        <frm_default>Italy</frm_default>
         <frm_show>0</frm_show>
     </field>
     <field>
@@ -67,21 +77,20 @@
         <type>select</type>
         <frm_type>regione</frm_type>
         <frm_it>Regione</frm_it>
-        <frm_default>PIEMONTE</frm_default>                
+        <frm_default>LOMBARDIA</frm_default>
     </field>
     <field>
         <name>provincia</name>
         <type>string</type>
         <frm_it>Provincia</frm_it>
         <frm_type>provincia</frm_type>
-        <frm_showinlist>1</frm_showinlist>
-    </field>    
+    </field>
     <field>
         <name>comune</name>
         <type>string</type>
         <frm_it>Comune</frm_it>
         <frm_type>comune</frm_type>
-    </field>    
+    </field>
     <field>
         <name>localita</name>
         <frm_it>Localit&agrave;</frm_it>
@@ -99,7 +108,7 @@
         <frm_it>Valle</frm_it>
         <type>uppercase</type>
         <frm_showinlist>0</frm_showinlist>
-    </field>	
+    </field>
     <field>
         <name>areas</name>
         <frm_it>Area carsica</frm_it>
@@ -107,7 +116,7 @@
         <frm_type>multicave</frm_type>
         <foreignkey>ctl_areas</foreignkey>
         <fk_link_field>code</fk_link_field>
-        <fk_show_field>name</fk_show_field>		
+        <fk_show_field>name</fk_show_field>
     </field>
     <field>
         <name>geologicalformation</name>
@@ -115,8 +124,13 @@
         <frm_it>Formazione geologica</frm_it>
         <foreignkey>ctl_geologicalformations</foreignkey>
         <fk_link_field>code</fk_link_field>
-        <fk_show_field>code,name</fk_show_field>        
+        <fk_show_field>code,name</fk_show_field>
     </field>
+    <field>
+        <name>age</name>
+        <type>string</type>
+    </field>
+
     <field>
         <name>lithology</name>
         <type>string</type>
@@ -126,23 +140,23 @@
     <field>
         <name>lenght_total</name>
         <view_group>size</view_group>
-        <view_group_i18n>size</view_group_i18n>        
+        <view_group_i18n>size</view_group_i18n>
         <frm_group>size</frm_group>
         <frm_group_i18n>size</frm_group_i18n>
         <type>string</type>
         <frm_help_it>somma delle lunghezze di tutte le gallerie calcolate nelle tre
-            dimensioni; si sommano perciò anche le lunghezze dei pozzi e dei tratti inclinati</frm_help_it>        
+            dimensioni; si sommano perciò anche le lunghezze dei pozzi e dei tratti inclinati</frm_help_it>
         <frm_type>os_lenght</frm_type>
-        <frm_it>Sviluppo reale</frm_it>		
+        <frm_it>Sviluppo reale</frm_it>
         <frm_showinlist>1</frm_showinlist>
         <frm_suffix> m</frm_suffix>
-        <frm_size>8</frm_size>        
+        <frm_size>8</frm_size>
     </field>
     <field>
         <name>lenght_planimetric</name>
         <type>string</type>
         <frm_type>os_lenght</frm_type>
-        <frm_it>Sviluppo planimetrico</frm_it>		
+        <frm_it>Sviluppo planimetrico</frm_it>
         <frm_help_it>somma delle lunghezze di tutte le gallerie,calcolate in pianta,
             cioè proiettate su un piano orizzontale</frm_help_it>
         <frm_suffix> m</frm_suffix>
@@ -154,7 +168,7 @@
         <frm_type>os_lenght</frm_type>
         <frm_help_it>Per estensione si intende la massima lunghezza planimetrica della cavità,non
             necessariamente a partire dall'ingresso</frm_help_it>
-        <frm_it>Estensione</frm_it>		
+        <frm_it>Estensione</frm_it>
         <frm_suffix> m</frm_suffix>
         <frm_size>8</frm_size>
     </field>
@@ -172,7 +186,7 @@
         <frm_type>os_lenght</frm_type>
         <frm_it>Dislivello negativo</frm_it>
         <frm_size>8</frm_size>
-        <frm_suffix> m</frm_suffix>	
+        <frm_suffix> m</frm_suffix>
     </field>
     <field>
         <name>depth_total</name>
@@ -180,8 +194,8 @@
         <frm_endgroup>size</frm_endgroup>
         <type>string</type>
         <frm_type>os_lenght</frm_type>
-        <frm_it>Dislivello totale</frm_it>				
-        <frm_suffix> m</frm_suffix>	
+        <frm_it>Dislivello totale</frm_it>
+        <frm_suffix> m</frm_suffix>
         <frm_size>8</frm_size>
         <frm_showinlist>1</frm_showinlist>
     </field>
@@ -235,7 +249,7 @@
         <name>elevation_map</name>
         <type>string</type>
         <frm_it>Quota cartografica</frm_it>
-        <frm_type>os_lenght</frm_type>		
+        <frm_type>os_lenght</frm_type>
         <frm_suffix> m s.l.m</frm_suffix>
         <frm_size>8</frm_size>
     </field>
@@ -243,7 +257,7 @@
         <name>elevation_gps</name>
         <type>string</type>
         <frm_type>os_lenght</frm_type>
-        <frm_it>Quota GPS</frm_it>	
+        <frm_it>Quota GPS</frm_it>
         <frm_help>ATTENZIONE: la quota data dai gps barometrici NON è la quota GPS ma la quota altimetrica.
             la quota GPS è quella data dall'elissoide a cui fa riferimento il datum wgs84
         </frm_help>
@@ -252,14 +266,22 @@
     </field>
     <field>
         <name>map_denomination</name>
-        <frm_it>Denominazione carta</frm_it>	
+        <frm_it>Denominazione carta</frm_it>
         <type>string</type>
-    </field>    
+    </field>
     <field>
         <name>map_edition</name>
-        <frm_it>Edizione carta</frm_it>	
+        <frm_it>Edizione carta</frm_it>
         <type>string</type>
         <frm_help>Inserire l'edizione della carta</frm_help>
+    </field>
+    <field>
+        <name>location_evaluation_options</name>
+        <type>string</type>
+        <frm_type>stringselect</frm_type>
+        <foreignkey>ctl_caves</foreignkey>
+        <fk_link_field>location_evaluation_options</fk_link_field>
+        <fk_show_field>location_evaluation_options</fk_show_field>         
     </field>
     <field>
         <name>location_evaluation</name>
@@ -278,61 +300,61 @@
         <frm_options>Y,N</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
     </field>
-    <field> 
+    <field>
         <name>marine</name>
         <frm_it>Cavit&agrave; marina</frm_it>
         <type>radio</type>
         <frm_options>Y,N</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
     </field>
-    <field> 
+    <field>
         <name>lake</name>
-        <frm_it>Cavit&agrave;lacustre</frm_it>
+        <frm_it>Cavit&agrave; lacustre</frm_it>
         <type>radio</type>
         <frm_options>Y,N</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
-    </field>    
-    <field>  
+    </field>
+    <field>
         <name>environmentalrisk</name>
         <frm_it>Rischio ambientale</frm_it>
         <type>radio</type>
         <frm_options>Y,N</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
     </field>
-    <field>  
+    <field>
         <name>tourist</name>
         <frm_it>Grotta turistica</frm_it>
         <type>radio</type>
         <frm_options>Y,</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
-    </field>    
-    <field>  
+    </field>
+    <field>
         <name>closed</name>
         <frm_it>Cavit&agrave; chiusa</frm_it>
         <type>radio</type>
         <frm_options>Y,</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
     </field>
-    <field>  
+    <field>
         <name>closed_notes</name>
         <frm_it>Note accesso alla grotta</frm_it>
         <type>text</type>
     </field>
-    <field>  
+    <field>
         <name>destroyed</name>
         <frm_it>Cavit&agrave; distrutta</frm_it>
         <type>radio</type>
         <frm_options>Y,,P</frm_options>
-        <frm_options_i18n>yes,no,partially</frm_options_i18n>
+        <frm_options_it>Si,No,Parzialmente</frm_options_it>
         <frm_endgroup>references to special censuses</frm_endgroup>
     </field>
     <field>
         <name>check</name>
         <frm_it>Posizione verificata sul campo da curatore</frm_it>
         <frm_help>Attenzione !! Il campo deve essere compilato dopo che la grotta è stata ritrovata successivamente la messa a catasto</frm_help>
-        <type>varchar</type>
+        <frm_type>check</frm_type>
         <frm_show>1</frm_show>
-    </field>    
+    </field>
     <field>
         <name>check_date</name>
         <frm_it>Data ultima verifica sul campo</frm_it>
@@ -344,7 +366,7 @@
     </field>
     <field>
         <name>hydrology</name>
-        <frm_it>Idrologia</frm_it>		
+        <frm_it>Idrologia</frm_it>
         <type>string</type>
         <frm_type>multicheck</frm_type>
         <frm_options>temporary flooding,absorbent,emitting,permanent absorbent,temporary absorbent,permanent issuing,temporary issuing,lakes,permanent lakes,temporary lakes,slight flows,dry,siphons,permanent siphons,temporary siphons,only dripping,torrents,permanent torrents,temporary torrents,temporary ice,permanent ice,snow wells</frm_options>
@@ -361,18 +383,38 @@
         <frm_it>Percorribilit&agrave;</frm_it>
         <frm_help_it>es. Facile</frm_help_it>
         <type>uppercase</type>
-    </field>		
+    </field>
+    <field>
+        <name>practicability_text</name>
+        <type>text</type>>
+        <frm_it>Note Percorribilit&agrave;</frm_it>
+    </field>
+    
     <field>
         <name>associations</name>
         <frm_it>Gruppi</frm_it>
         <frm_help>Gruppi o persone che hanno effettuato attivit&agrave; rilevanti o esplorative sulla cacit&agrave;</frm_help>
         <type>text</type>
+        <frm_type>multiselect</frm_type>
+
         <frm_cols>80</frm_cols>
+        <foreignkey>ctl_associations</foreignkey>
+        <fk_link_field>name</fk_link_field>
+        <fk_show_field>acronym,name</fk_show_field>
     </field>
     <field>
+        <name>DATAGG</name>
+        <frm_it>Data agg. catastale</frm_it>
+        <frm_help>Data dell'ultimo aggiornamento catastale ufficiale convenzionato</frm_help>
+        <type>string</type>
+        <type>datetime</type>
+        <frm_dateformat>y-mm-dd</frm_dateformat>
+        <view_dateformat>dd/mm/y</view_dateformat>
+    </field>      
+    <field>
         <name>chronology</name>
-        <frm_it>Cronologia catastale</frm_it>		
-        <frm_help>Cronologia delle versioni,esempio: 
+        <frm_it>Cronologia catastale</frm_it>
+        <frm_help>Cronologia delle versioni,esempio:
             1990 - Mario Rossi - primo accatastatore
             2002 - Paolo Bianchi - aggiornamento per nuovo ramo esplorato,aggiunta descrizione
             2010 - Pinco Pallino - riposizionamento
@@ -410,7 +452,7 @@
     </field>
     <field>
         <name>fauna</name>
-        <frm_it>Fauna</frm_it>		
+        <frm_it>Fauna</frm_it>
         <type>text</type>
         <frm_rows>auto</frm_rows>
         <frm_cols>80</frm_cols>
@@ -425,19 +467,28 @@
         <frm_show>1</frm_show>
     </field>
     <field>
+        <name>meteorology_text</name>
+        <frm_it>Meteorologia</frm_it>
+        <type>text</type>
+        <frm_show>1</frm_show>
+        <frm_help_it>Descrizione delle circolazioni d'aria e di acqua della grotta</frm_help_it>
+        <frm_rows>auto</frm_rows>
+        <frm_cols>80</frm_cols>
+    </field>     
+    <field>
         <name>geology</name>
-        <frm_it>Geologia</frm_it>		
+        <frm_it>Geologia</frm_it>
         <type>text</type>
         <frm_rows>auto</frm_rows>
         <frm_cols>80</frm_cols>
     </field>
     <field>
         <name>history</name>
-        <frm_it>Storia</frm_it>		
+        <frm_it>Storia</frm_it>
         <type>text</type>
         <frm_rows>auto</frm_rows>
         <frm_cols>80</frm_cols>
-    </field>	
+    </field>
     <innertable>
         <tablename>ctl_surveys</tablename>
         <frm_i18n>surveys</frm_i18n>
@@ -494,7 +545,7 @@
         <name>authoritinerary</name>
         <frm_it>Autori testi Itinerario</frm_it>
         <view_hiddentitle>1</view_hiddentitle>
-    </field>	
+    </field>
     <field>
         <name>authorfauna</name>
         <frm_it>Autori testi Fauna</frm_it>
@@ -504,11 +555,11 @@
         <name>authorhistory</name>
         <frm_it>Autori testi Storia</frm_it>
         <view_hiddentitle>1</view_hiddentitle>
-    </field>	
+    </field>
     <field>
         <name>import_rawdata</name>
         <frm_it>Dati pre importazione</frm_it>
-        <type>text</type>        
+        <type>text</type>
     </field>
     <field>
         <name>recordinsert</name>
@@ -542,7 +593,16 @@
         <frm_show>0</frm_show>
         <view_show>1</view_show>
         <view_endgroup>data</view_endgroup>
-    </field>    
+    </field>
+    <field>
+        <name>groupview</name>
+        <frm_i18n>limits the display of the content in these groups</frm_i18n>
+        <foreignkey>fn_groups</foreignkey>
+        <fk_link_field>groupname</fk_link_field>
+        <fk_show_field>groupname</fk_show_field>
+        <frm_type>multicheck</frm_type>
+        <type>string</type>
+    </field>
     <field>
         <name>groupinsert</name>
         <frm_i18n>limits the edit of the content in these groups</frm_i18n>
@@ -553,7 +613,7 @@
         <type>string</type>
         <frm_setonlyadmin>1</frm_setonlyadmin>
         <frm_allowupdate>onlyadmin</frm_allowupdate>
-    </field>    
+    </field>
 
     <field>
         <name>latitude</name>
@@ -564,9 +624,14 @@
         <name>longitude</name>
         <type>float</type>
         <frm_show>0</frm_show>
-    </field>  
+    </field>
     <field>
         <name>coordnatesupdated</name>
+        <frm_show>0</frm_show>
+    </field>
+    <field>
+        <name>recorddeleted</name>
+        <type>bool</type>
         <frm_show>0</frm_show>
     </field>
     <field>
@@ -579,32 +644,6 @@
         <frm_i18n>data to be verified</frm_i18n>
         <frm_options>Y,N</frm_options>
         <frm_options_i18n>yes,no</frm_options_i18n>
-    </field>
-    <field>
-        <name>recorddeleted</name>
-        <type>bool</type>
-        <frm_show>0</frm_show>
-    </field>
-    <field>
-        <name>groupview</name>
-        <frm_i18n>limits the display of the content in these groups</frm_i18n>
-        <foreignkey>fn_groups</foreignkey>
-        <fk_link_field>groupname</fk_link_field>
-        <fk_show_field>groupname</fk_show_field>
-        <frm_type>multicheck</frm_type>
-        <type>string</type>
-    </field>
-    <field>
-        <name>xxx</name>
-        <frm_it>Data curatore</frm_it>
-        <frm_help_i18n>field reserved for curator</frm_help_i18n>
-        <type>datetime</type>
-        <frm_show>1</frm_show>
-        <frm_dateformat>y-mm-dd</frm_dateformat>
-        <view_dateformat>dd/mm/y</view_dateformat>
-        <frm_setonlyadmin>1</frm_setonlyadmin>
-        <frm_allowupdate>onlyadmin</frm_allowupdate>        
-    </field>
+    </field>    
     <driver>mysql</driver>
-
 </tables>

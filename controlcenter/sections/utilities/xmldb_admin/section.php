@@ -285,7 +285,7 @@ function new_table($tablename,$path,$databasename)
 		}
 		$newvalues=$table->getbypost();
 		$newvalues['primarykey']="1";
-		$errors=$table->VerifyExt($newvalues,false);
+		$errors=$table->VerifyInsert($newvalues,false);
 		if (count($errors)>0)
 		{
 			foreach ( $errors as $field => $error )
